@@ -1,36 +1,38 @@
+# primer código
+```mermaid
 classDiagram
-    class CuartoHotelero {
-        - int identificador
-        - string categoria
-        - bool estaReservado
-        + CuartoHotelero(int, string)
-        + ~CuartoHotelero()
-        + int obtenerIdentificador()
-        + string obtenerCategoria()
-        + bool verificarDisponibilidad()
-        + void reservar()
-        + void cancelarReserva()
+    class Habitacion {
+        - int numero
+        - string tipo
+        - bool ocupada
+        + Habitacion(int, string)
+        + ~Habitacion()
+        + int getNumero()
+        + string getTipo()
+        + bool estaOcupada()
+        + void ocupar()
+        + void desocupar()
     }
 
-    class Huesped {
-        - int documento
-        - string nombreCompleto
-        + Huesped(int, string)
-        + ~Huesped()
-        + int obtenerDocumento()
-        + string obtenerNombreCompleto()
+    class Cliente {
+        - int id
+        - string nombre
+        + Cliente(int, string)
+        + ~Cliente()
+        + int getId()
+        + string getNombre()
     }
 
-    class Establecimiento {
-        - string denominacion
-        - vector<CuartoHotelero> listaCuartos
-        - vector<Huesped*> listaHuespedes
-        + Establecimiento(string)
-        + ~Establecimiento()
-        + void incluirCuarto(int, string)
-        + void registrarHuesped(Huesped* nuevoHuesped)
-        + void desplegarInformacion()
+    class Hotel {
+        - string nombre
+        - vector<Habitacion> habitaciones
+        - vector<Cliente*> clientes
+        + Hotel(string)
+        + ~Hotel()
+        + void agregarHabitacion(int, string)
+        + void registrarCliente(Cliente* cliente)
+        + void mostrarInfo()
     }
 
-    Establecimiento *-- CuartoHotelero
-    Establecimiento o-- Huesped
+    Hotel *-- Habitacion 
+    Hotel o-- Cliente
